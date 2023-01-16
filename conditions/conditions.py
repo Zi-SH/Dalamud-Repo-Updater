@@ -1,1 +1,1 @@
-conditions = [{'DalamudApiLevel': 8}]
+conditions = []
