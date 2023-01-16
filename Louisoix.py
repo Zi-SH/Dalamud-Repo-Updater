@@ -27,13 +27,14 @@ for repo in repoList:
     else:
         validRepoList.append(repo)
 
-    plugin = {key: value for key, value in repoJSON.items() if key in tags}
+    for plugin in repoJSON:
+        plugin = {key: value for key, value in plugin.items() if key in tags}
 
-    if checkConditions(plugin):
-        plugin = dict(sorted(plugin.items()))
-        validPluginList.append(plugin)
-    else:
-        outdatedRepoList.append(repo)
+        if checkConditions(plugin):
+            plugin = dict(sorted(plugin.items()))
+            validPluginList.append(plugin)
+        else:
+            outdatedRepoList.append(repo)
 
 writeRepo("ffxiv_custom_repo.json", validPluginList)
 
